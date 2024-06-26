@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  servicea:
+    image: servicea
+    build:
+      context: ./service-a
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3001:3001
+    depends_on:
+      - serviceb
+
+  serviceb:
+    image: serviceb
+    build:
+      context: ./service-b
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3002:3002

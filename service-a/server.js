@@ -11,7 +11,7 @@ app.post('/process', async (req, res) => {
         return res.status(400).json({ error: 'Invalid data' });
     }
     try {
-        const response = await axios.post('http://localhost:3002/data', { data });
+        const response = await axios.post('http://serviceb:3002/data', { data });
         return res.json(response.data);
     } catch (error) {
         return res.status(500).json({ error: 'Error calling Service B' });

@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  servicea:
+    image: servicea
+    build:
+      context: ./service-a
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3001:3001
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "server.js"]
+
+  serviceb:
+    image: serviceb
+    build:
+      context: ./service-b
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3002:3002
+      - 9230:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "server.js"]
